@@ -198,7 +198,7 @@ function Counter() {
 - React 컴포넌트 내부의 동적인 데이터를 관리하는 데 사용되는 데이터 구조
 - 일반적으로 시간에 따라 변하는 값이나 상호작용 또는 네트워크 응답 등에 의해 변경되는 값을 관리한다.
 - State가 바뀌면 컴포넌트는 리렌더링되고, 함수가 재실행되어 화면이 다시 그려지게 된다.
-- 함수가 재실행되어 값이 초기화될 것 같지만, 계속 저장이 되고 있다. ([React 톺아보기](https://goidle.github.io/react/in-depth-react-hooks_1/))
+- 함수가 재실행되어 값이 초기화될 것 같지만, 계속 저장이 되고 있다. ([같이 보면 좋은 글 - React 톺아보기](https://goidle.github.io/react/in-depth-react-hooks_1/))
 
 ### Props
 
