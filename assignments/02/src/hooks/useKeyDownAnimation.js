@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 const useKeyDownAnimation = () => {
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(0);
+  const [rotate, setRotate] = useState(0);
+  const [side, setSide] = useState(false);
   const [isKeyPressed, setIsKetPressed] = useState(false);
 
   useEffect(() => {
@@ -10,10 +12,11 @@ const useKeyDownAnimation = () => {
       if (e.keyCode === 32) {
         setIsKetPressed(true);
         setPositionY((prevPosition) => prevPosition - 30);
-        setTimeout(
-          () => setPositionY((prevPosition) => prevPosition + 30),
-          200
-        );
+        setRotate(720);
+        setTimeout(() => {
+          setPositionY((prevPosition) => prevPosition + 30);
+          setRotate(0);
+        }, 400);
         return;
       }
       switch (e.key) {
@@ -25,6 +28,7 @@ const useKeyDownAnimation = () => {
           break;
         case "ArrowLeft":
           setIsKetPressed(true);
+          setSide(false);
           setPositionX((prevPosition) =>
             prevPosition > -120 ? prevPosition - 30 : prevPosition
           );
@@ -37,31 +41,7 @@ const useKeyDownAnimation = () => {
           break;
         case "ArrowRight":
           setIsKetPressed(true);
-          setPositionX((prevPosition) =>
-            prevPosition < 120 ? prevPosition + 30 : prevPosition
-          );
-          break;
-
-        case "w":
-          setIsKetPressed(true);
-          setPositionY((prevPosition) =>
-            prevPosition > -120 ? prevPosition - 30 : prevPosition
-          );
-          break;
-        case "a":
-          setIsKetPressed(true);
-          setPositionX((prevPosition) =>
-            prevPosition > -120 ? prevPosition - 30 : prevPosition
-          );
-          break;
-        case "s":
-          setIsKetPressed(true);
-          setPositionY((prevPosition) =>
-            prevPosition < 120 ? prevPosition + 30 : prevPosition
-          );
-          break;
-        case "d":
-          setIsKetPressed(true);
+          setSide(true);
           setPositionX((prevPosition) =>
             prevPosition < 120 ? prevPosition + 30 : prevPosition
           );
@@ -70,7 +50,7 @@ const useKeyDownAnimation = () => {
     });
   }, []);
 
-  return { positionX, positionY, isKeyPressed };
+  return { positionX, positionY, rotate, side, isKeyPressed };
 };
 
 export default useKeyDownAnimation;
