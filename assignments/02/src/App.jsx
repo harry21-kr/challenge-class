@@ -6,9 +6,8 @@ import useKeyDownAnimation from "./hooks/useKeyDownAnimation";
 
 function App() {
   const audioRef = useRef(null);
-  const pikachuRef = useRef(null);
   const { positionX, positionY, rotate, side, isKeyPressed } =
-    useKeyDownAnimation(pikachuRef);
+    useKeyDownAnimation();
 
   useEffect(() => {
     if (isKeyPressed) {
@@ -40,7 +39,6 @@ function App() {
           }}
         />
         <img
-          ref={pikachuRef}
           src={PIKACHU}
           style={{
             position: "absolute",
