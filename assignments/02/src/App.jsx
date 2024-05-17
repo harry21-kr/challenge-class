@@ -34,8 +34,8 @@ function App() {
           src={GRASS}
           style={{
             position: "absolute",
-            width: 300,
-            height: 300,
+            width: 600,
+            height: 600,
           }}
         />
         <img

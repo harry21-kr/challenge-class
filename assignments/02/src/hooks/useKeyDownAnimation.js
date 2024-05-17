@@ -11,10 +11,10 @@ const useKeyDownAnimation = () => {
     window.addEventListener("keydown", (e) => {
       if (e.keyCode === 32) {
         setIsKetPressed(true);
-        setPositionY((prevPosition) => prevPosition - 30);
+        setPositionY((prevPosition) => prevPosition - 15);
         setRotate(720);
         setTimeout(() => {
-          setPositionY((prevPosition) => prevPosition + 30);
+          setPositionY((prevPosition) => prevPosition + 15);
           setRotate(0);
         }, 400);
         return;
@@ -23,27 +23,27 @@ const useKeyDownAnimation = () => {
         case "ArrowUp":
           setIsKetPressed(true);
           setPositionY((prevPosition) =>
-            prevPosition > -120 ? prevPosition - 30 : prevPosition
+            prevPosition > -270 ? prevPosition - 15 : prevPosition
           );
           break;
         case "ArrowLeft":
           setIsKetPressed(true);
           setSide(false);
           setPositionX((prevPosition) =>
-            prevPosition > -120 ? prevPosition - 30 : prevPosition
+            prevPosition > -270 ? prevPosition - 15 : prevPosition
           );
           break;
         case "ArrowDown":
           setIsKetPressed(true);
           setPositionY((prevPosition) =>
-            prevPosition < 120 ? prevPosition + 30 : prevPosition
+            prevPosition < 270 ? prevPosition + 15 : prevPosition
           );
           break;
         case "ArrowRight":
           setIsKetPressed(true);
           setSide(true);
           setPositionX((prevPosition) =>
-            prevPosition < 120 ? prevPosition + 30 : prevPosition
+            prevPosition < 270 ? prevPosition + 15 : prevPosition
           );
           break;
       }
