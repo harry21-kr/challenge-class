@@ -44,7 +44,7 @@ function App() {
             position: "absolute",
             width: 60,
             height: 60,
-            transition: "all 0.5s",
+            transition: "all 0.2s",
             transform: `translate(${positionX}px, ${positionY}px) rotate(${rotate}deg) scaleX(${
               side ? 1 : -1
             })`,
