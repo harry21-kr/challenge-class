@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MAX_POSITION, MOVE_POSITION } from "../config/constants";
 
 const useKeyDownAnimation = () => {
   const [positionX, setPositionX] = useState(0);
@@ -11,10 +12,10 @@ const useKeyDownAnimation = () => {
     window.addEventListener("keydown", (e) => {
       if (e.keyCode === 32) {
         setIsKetPressed(true);
-        setPositionY((prevPosition) => prevPosition - 15);
+        setPositionY((prevPosition) => prevPosition - MOVE_POSITION);
         setRotate(720);
         setTimeout(() => {
-          setPositionY((prevPosition) => prevPosition + 15);
+          setPositionY((prevPosition) => prevPosition + MOVE_POSITION);
           setRotate(0);
         }, 400);
         return;
@@ -23,27 +24,35 @@ const useKeyDownAnimation = () => {
         case "ArrowUp":
           setIsKetPressed(true);
           setPositionY((prevPosition) =>
-            prevPosition > -270 ? prevPosition - 15 : prevPosition
+            prevPosition > -MAX_POSITION
+              ? prevPosition - MOVE_POSITION
+              : prevPosition
           );
           break;
         case "ArrowLeft":
           setIsKetPressed(true);
           setSide(false);
           setPositionX((prevPosition) =>
-            prevPosition > -270 ? prevPosition - 15 : prevPosition
+            prevPosition > -MAX_POSITION
+              ? prevPosition - MOVE_POSITION
+              : prevPosition
           );
           break;
         case "ArrowDown":
           setIsKetPressed(true);
           setPositionY((prevPosition) =>
-            prevPosition < 270 ? prevPosition + 15 : prevPosition
+            prevPosition < MAX_POSITION
+              ? prevPosition + MOVE_POSITION
+              : prevPosition
           );
           break;
         case "ArrowRight":
           setIsKetPressed(true);
           setSide(true);
           setPositionX((prevPosition) =>
-            prevPosition < 270 ? prevPosition + 15 : prevPosition
+            prevPosition < MAX_POSITION
+              ? prevPosition + MOVE_POSITION
+              : prevPosition
           );
           break;
       }
