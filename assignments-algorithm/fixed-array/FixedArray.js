@@ -13,7 +13,6 @@ class FixedArray {
         break;
       }
     }
-    console.log(this.#array);
   }
 
   pop() {
