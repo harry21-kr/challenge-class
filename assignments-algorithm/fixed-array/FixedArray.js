@@ -1,49 +1,40 @@
 class FixedArray {
   #arrayLength = 0;
   #array = [];
+  #index = 0;
 
   constructor(arrayLength) {
     this.#arrayLength = arrayLength;
+    for (let i = 0; i < arrayLength; i++) {
+      this.#array[i] = undefined;
+    }
   }
 
   push(element) {
-    for (let i = 0; i < this.#arrayLength; i++) {
-      if (this.#array[i] === undefined) {
-        this.#array[i] = element;
-        break;
-      }
+    if (this.#index >= this.#arrayLength) {
+      throw new Error("배열 최대 크기 초과");
     }
+    this.#array[this.#index] = element;
+    this.#index++;
   }
 
   pop() {
-    let target;
-    const newArr = [];
-    for (let i = 0; i < this.#arrayLength; i++) {
-      if (this.#array[i + 1] === undefined) {
-        target = this.#array[i];
-        break;
-      }
-
-      newArr[i] = this.#array[i];
+    const target = this.#array[this.#index - 1];
+    if (target === undefined) {
+      throw new Error("삭제할 요소 없음");
     }
-    this.#array = newArr;
+    this.#array[this.#index - 1] = undefined;
+    this.#index--;
     return target;
   }
 
   getLength() {
-    let count = 0;
-    for (let i = 0; i < this.#arrayLength; i++) {
-      if (this.#array[i] === undefined) break;
-      count++;
-    }
-    return count;
+    return this.#index;
   }
 
   stringify() {
     let str = "";
-    for (let i = 0; i < this.#arrayLength; i++) {
-      if (this.#array[i] === undefined) break;
-
+    for (let i = 0; i < this.#index; i++) {
       str +=
         this.#array[i + 1] !== undefined
           ? `${this.#array[i]},`
