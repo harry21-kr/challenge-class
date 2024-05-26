@@ -27,14 +27,13 @@ const memoReducer = (prevState = initialState, action) => {
     case ADD_MEMO: {
       const newMemo = {
         id: uuidv4(),
-        detail: action.detail,
+        detail: "",
         date: Date.now(),
       };
 
       return {
-        ...prevState,
         selectedId: newMemo.id,
-        memoList: [...prevState.memoList, newMemo],
+        memoList: [newMemo, ...prevState.memoList],
       };
     }
 
@@ -44,7 +43,7 @@ const memoReducer = (prevState = initialState, action) => {
       );
       return {
         ...prevState,
-        selectedId: prevState.memoList[0].id,
+        selectedId: newMemoList[0]?.id,
         memoList: newMemoList,
       };
     }
@@ -52,7 +51,7 @@ const memoReducer = (prevState = initialState, action) => {
     case EDIT_MEMO: {
       const newMemoList = prevState.memoList.map((prevMemoList) =>
         prevState.selectedId === prevMemoList.id
-          ? { ...prevMemoList, detail: action.detail, date: Date.now() }
+          ? { ...prevMemoList, detail: action.detail }
           : prevMemoList
       );
       return { ...prevState, memoList: newMemoList };

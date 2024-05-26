@@ -1,13 +1,28 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { EDIT_MEMO } from "../../../store/memo";
+import { useMemoList } from "../../../store/memo/hooks";
+import { formatDate } from "../../../utils";
 import { FlexBox, Text } from "../../ui";
 
 const MemoContent = () => {
+  const { memoList, selectedId } = useMemoList();
+
+  const dispatch = useDispatch();
+
+  const { date, detail } = memoList.find(({ id }) => id == selectedId);
+
+  const formattedDate = formatDate(date, "long");
+
   return (
     <MemoContentBox>
       <Text $fontSize="10px" $color="#808080" $textAlign="center">
-        2024년 5월 26일, 오후 5:05
+        {formattedDate}
       </Text>
-      <MemoContextTextArea />
+      <MemoContextTextArea
+        value={detail}
+        onChange={(e) => dispatch({ type: EDIT_MEMO, detail: e.target.value })}
+      />
     </MemoContentBox>
   );
 };
