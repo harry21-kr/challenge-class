@@ -38,4 +38,5 @@ const MemoContextTextArea = styled.textarea`
   all: unset;
   height: 100%;
   padding-top: 32px;
+  overflow-y: scroll;
 `;

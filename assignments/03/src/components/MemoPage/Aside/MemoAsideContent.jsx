@@ -18,7 +18,9 @@ const MemoAsideContent = () => {
             $isSelected={selectedId === id}
             onClick={() => dispatch({ type: SELECT_MEMO, id })}
           >
-            <Text $fontWeight="700">{detail ? detail : "새로운 메모"}</Text>
+            <Text $fontWeight="700" $margin="0px 0px 5px 0px">
+              {detail ? detail : "새로운 메모"}
+            </Text>
             <Text $fontSize="xs" $color="#404040">
               {formattedDate}
             </Text>
@@ -35,14 +37,13 @@ const MemoAsideContentWrap = styled(FlexBox)`
   padding: 20px 12px;
   flex-direction: column;
   gap: 8px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 const MemoAsideContentButton = styled(Button)`
   width: 100%;
   height: 56px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
   padding: 12px 24px;
   text-align: start;
   background-color: ${({ $isSelected }) => $isSelected && "#ffe07f"};
