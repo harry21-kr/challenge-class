@@ -37,5 +37,5 @@ const MemoContentBox = styled(FlexBox)`
 const MemoContextTextArea = styled.textarea`
   all: unset;
   height: 100%;
-  margin-top: 28px;
+  padding-top: 32px;
 `;
