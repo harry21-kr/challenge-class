@@ -37,4 +37,9 @@ const MemoAsideEditButton = styled(Button)`
   font-weight: 500;
   text-align: center;
   padding: 4px 8px;
+  transition: all 0.12s ease;
+
+  &:hover {
+    color: black;
+  }
 `;
