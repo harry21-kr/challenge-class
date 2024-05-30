@@ -6,7 +6,7 @@ const Toast = ({ options }) => {
   const [isShowingToast, setIsShowingToast] = useState(false);
 
   const className = clsx(
-    "shadow-lg bg-white flex flex-col gap-1 p-6 border rounded-lg w-[320px] transition-all duration-500 translate-x-[346px]",
+    "shadow-lg bg-white flex flex-col gap-1 p-6 border rounded-lg w-[320px] transition-all duration-500",
     isShowingToast ? "translate-x-0" : "translate-x-[346px]"
   );
 
