@@ -1,7 +1,7 @@
+import Page from "@/components/Page";
 import { TDeal } from "@/types/Deal.type";
 import Link from "next/link";
 import DealCard from "../../components/DealCard/DealCard";
-import { Page } from "../../components/Page";
 
 const deal: TDeal = {
   id: 111,

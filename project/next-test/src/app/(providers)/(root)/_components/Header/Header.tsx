@@ -1,6 +1,11 @@
+"use client";
+
+import Button from "@/components/Button";
 import Link from "next/link";
+import { useAuth } from "../../../../../contexts/auth.context";
 
 export const Header = () => {
+  const { isLoggedIn, isInitialized } = useAuth();
   return (
     <header className="border-b border-b-black">
       <div className="container mx-auto max-w-[1224px] px-5 h-16 flex items-center">
@@ -22,16 +27,26 @@ export const Header = () => {
           </ul>
         </nav>
 
-        <div className="ml-auto">
-          <ul className="flex gap-8">
-            <li>
-              <Link href="/login">로그인</Link>
-            </li>
-            <li>
-              <Link href="/sign-up">회원가입</Link>
-            </li>
-          </ul>
-        </div>
+        {isInitialized ? (
+          isLoggedIn ? (
+            <div className="ml-auto">로그인상태</div>
+          ) : (
+            <div className="ml-auto">
+              <ul className="flex gap-x-1.5">
+                <li>
+                  <Button size="sm">로그인</Button>
+                </li>
+                <li>
+                  <Button size="sm" outline>
+                    회원가입
+                  </Button>
+                </li>
+              </ul>
+            </div>
+          )
+        ) : (
+          ""
+        )}
       </div>
     </header>
   );

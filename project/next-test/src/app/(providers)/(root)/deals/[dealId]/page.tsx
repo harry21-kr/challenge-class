@@ -1,5 +1,6 @@
+import Button from "@/components/Button";
+import Page from "@/components/Page";
 import Image from "next/image";
-import { Page } from "../../../../components/Page/Page";
 import { TDeal } from "../../../../types/Deal.type";
 
 const deal: TDeal<true> = {
@@ -23,7 +24,7 @@ const deal: TDeal<true> = {
 
 const DealDetailPage = () => {
   return (
-    <Page title={deal.title} hideTitle>
+    <Page title={deal.title} hideTitle width="sm">
       {/* 이미지 */}
       <div className="relative aspect-square">
         <Image
@@ -53,6 +54,13 @@ const DealDetailPage = () => {
       <div>
         <div>{deal.likesCount}</div>
         <div>{deal.viewsCount}</div>
+      </div>
+
+      <div>
+        <Button>찜하기</Button>
+        <Button intent="danger">찜 취소하기</Button>
+        <Button>글 수정하기</Button>
+        <Button intent="danger">글 삭제하기</Button>
       </div>
     </Page>
   );
