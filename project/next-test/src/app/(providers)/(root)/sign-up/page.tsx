@@ -9,10 +9,15 @@ import { ComponentProps } from "react";
 const SignUpPage = () => {
   const handleSubmit: ComponentProps<"form">["onSubmit"] = async (e) => {
     e.preventDefault();
-    console.log(supabase);
+
     const { data, error } = await supabase.auth.signUp({
-      email: "example@email.com",
+      email: "example4@email.com",
       password: "example-password",
+      options: {
+        data: {
+          nickname: "박원빈4",
+        },
+      },
     });
   };
 

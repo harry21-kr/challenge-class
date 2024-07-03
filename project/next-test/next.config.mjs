@@ -5,6 +5,7 @@ const nextConfig = {
       {
         hostname: "dnvefa72aowie.cloudfront.net",
       },
+      { hostname: "xzinypinhazkqlgfumfn.supabase.co" },
     ],
   },
 };

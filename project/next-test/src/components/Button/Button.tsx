@@ -31,9 +31,15 @@ type ButtonProps = {} & ButtonVariantProps & ComponentProps<"button">;
 
 type ButtonVariantProps = VariantProps<typeof buttonVariant>;
 
-const Button: React.FC<ButtonProps> = ({ children, size, intent, outline }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  size,
+  intent,
+  outline,
+  ...props
+}) => {
   return (
-    <button className={buttonVariant({ size, intent, outline })}>
+    <button className={buttonVariant({ size, intent, outline })} {...props}>
       {children}
     </button>
   );
